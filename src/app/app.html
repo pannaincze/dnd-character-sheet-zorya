@@ -1,0 +1,50 @@
+<mat-tab-group>
+  <mat-tab label="Character Stats">
+    <mat-grid-list cols="5" rowHeight="5em" gutterSize="16px">
+      <mat-grid-tile colspan="5" rowspan="2">
+        <mat-card class="overview-card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>{{ name() }}</mat-card-title>
+            <mat-card-subtitle>Level {{ level() }} - {{ class() }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-chip-set>
+              <mat-chip>Charlatan</mat-chip>
+              <mat-chip>Chaotic Neutral</mat-chip>
+              <mat-chip>Animal Lover</mat-chip>
+              <mat-chip>Proficiency Bonus: +{{ proficiencyBonus() }}</mat-chip>
+            </mat-chip-set>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="6">
+        <div class="ability-column">
+          @for (config of abilityConfigs; track config.label) {
+          <mat-card class="ability-card">
+            <span class="ability-label">{{ config.label }}</span>
+
+            <div class="modifier-value">
+              {{ modifiers[config.mod]() >= 0 ? '+' : '' }}{{ modifiers[config.mod]() }}
+            </div>
+
+            <div class="score-bubble">
+              <input
+                type="number"
+                [ngModel]="stats[config.stat]()"
+                (ngModelChange)="stats[config.stat].set($event)"
+              />
+            </div>
+          </mat-card>
+          }
+        </div>
+      </mat-grid-tile>
+      <!-- <mat-grid-tile colspan="2" rowspan="1">3</mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">4</mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">5</mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">6</mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">7</mat-grid-tile> -->
+    </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Combat"> Combat </mat-tab>
+  <mat-tab label="Spells"> Spells </mat-tab>
+</mat-tab-group>

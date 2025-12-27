@@ -1,0 +1,86 @@
+.overview-card-footer {
+  padding: 16px;
+}
+
+.overview-card {
+  border: 1px solid;
+
+  mat-card-title {
+    font-size: 1.5rem;
+  }
+
+  mat-card-subtitle {
+    font-weight: bold;
+  }
+}
+
+.dashboard-container {
+  padding: 16px;
+  min-height: 100vh;
+}
+
+.ability-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 1em;
+}
+
+.ability-card {
+  border: 1px solid;
+  border-left: 3px solid; // Left accent bar
+  padding: 8px 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+  border-radius: 10px;
+
+  // Hover effect for interactivity
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  .ability-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .modifier-value {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  // The "Bubble" for the base score
+  .score-bubble {
+    position: absolute;
+    bottom: -8px;
+    width: 30px; /* Narrower bubble */
+    height: 26px;
+    border: 1px solid;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+
+    input {
+      width: 100%;
+      border: none;
+      font-weight: bold;
+      text-align: center;
+      font-size: 12px;
+      outline: none;
+
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
+}
